@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{# просто заполняем блоки #}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    <h1>
+        List of articles
+    </h1>
+    {% for article in articles %}
+        <h4>
+            <a href="{% url 'article' article.id %}">
+                <span class="title_articles">
+                    {{ article.title }}
+                </span>  <b> (date create:</b>  {{ article.date }})
+
+            </a>
+        </h4>
+        <p>
+            <b> author:  {{ article.user }}</b>
+        </p>
+            <a  class="btn btn-danger" href="{% url 'article' article.id %}">
+                READ MORE>>>
+            </a>
+
+    {% endfor %}
+{% endblock %}
